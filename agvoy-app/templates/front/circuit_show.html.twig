@@ -137,6 +137,12 @@
 </div>
 
 <br>
+{% if circuit.id in likes %}
+    <a href="{{ path('likes_circuit_specific', {id: circuit.id}) }}">Je n'aime plus</a>
+{% else %}
+    <a href="{{ path('likes_circuit_specific', {id: circuit.id}) }}">J'aime</a>
+{% endif %}
+<br>
 <a href="{{ path('front') }}">Retour à l'accueil</a>
 
 {% endblock %}

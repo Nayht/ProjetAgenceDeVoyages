@@ -16,7 +16,7 @@ Hello {{ controller_name }}!
             <th>Ville départ</th>
             <th>Ville arrivée</th>
             <th>Durée circuit</th>
-            <th> </th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -30,6 +30,12 @@ Hello {{ controller_name }}!
                 <td>{{ circuit.dureeCircuit }}</td>
                 <td>
                     <a href="{{ path('front_circuit_show', {id: circuit.id}) }}">Détails</a>
+                    &nbsp;
+                    {% if circuit.id in likes %}
+                        <a href="{{ path('likes', {id: circuit.id}) }}">Je n'aime plus</a>
+                    {% else %}
+                        <a href="{{ path('likes', {id: circuit.id}) }}">J'aime</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
