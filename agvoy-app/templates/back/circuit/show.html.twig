@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Circuit{% endblock %}
+
+
+{% block body %}
+    <h1 class="inpage-title">Circuit</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="emphase">Id</th>
+                <td>{{ circuit.id }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">Description</th>
+                <td>{{ circuit.description }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">PaysDepart</th>
+                <td>{{ circuit.paysDepart }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">VilleDepart</th>
+                <td>{{ circuit.villeDepart }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">VilleArrivee</th>
+                <td>{{ circuit.villeArrivee }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">DureeCircuit</th>
+                <td>{{ circuit.dureeCircuit }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_circuit_index') }}">Back to list</a>
+    <br>
+    <a href="{{ path('admin_circuit_edit', {'id': circuit.id}) }}">Edit</a>
+
+    {{ include('back/circuit/_delete_form.html.twig') }}
+{% endblock %}

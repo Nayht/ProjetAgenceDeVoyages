@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etape{% endblock %}
+
+{% block body %}
+    <h1 class="inpage-title">Etape</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="emphase">Id</th>
+                <td>{{ etape.id }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">NumeroEtape</th>
+                <td>{{ etape.numeroEtape }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">VilleEtape</th>
+                <td>{{ etape.villeEtape }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">NombreJours</th>
+                <td>{{ etape.nombreJours }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_etape_index') }}">Back to list</a>
+    <br>
+    <a href="{{ path('admin_etape_edit', {'id': etape.id}) }}">Edit</a>
+
+    {{ include('back/etape/_delete_form.html.twig') }}
+{% endblock %}

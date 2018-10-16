@@ -62,7 +62,7 @@
 <div class="form-horizontal">
 
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label header">Id</label>
+        <label class="col-sm-2 col-form-label emphase">Id</label>
         <div class="col-sm-10">
             <div class="form-control form-control-plaintext">{{ circuit.id }}</div>
         </div>
@@ -71,7 +71,7 @@
     <hr>
 
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label header">Description</label>
+        <label class="col-sm-2 col-form-label emphase">Description</label>
         <div class="col-sm-10">
             <div class="form-control form-control-plaintext">{{ circuit.description }}</div>
         </div>
@@ -80,7 +80,7 @@
     <hr>
 
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label header">Ville départ</label>
+        <label class="col-sm-2 col-form-label emphase">Ville départ</label>
         <div class="col-sm-10">
             <div class="form-control form-control-plaintext">{{ circuit.villeDepart }} ({{ circuit.paysDepart }})</div>
         </div>
@@ -89,7 +89,7 @@
     <hr>
 
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label header">Ville arrivée</label>
+        <label class="col-sm-2 col-form-label emphase">Ville arrivée</label>
         <div class="col-sm-10">
             <div class="form-control form-control-plaintext">{{ circuit.villeArrivee }}</div>
         </div>
@@ -98,7 +98,7 @@
     <hr>
 
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label header">Durée circuit</label>
+        <label class="col-sm-2 col-form-label emphase">Durée circuit</label>
         <div class="col-sm-10">
             <div class="form-control form-control-plaintext">{{ circuit.dureeCircuit }} jours</div>
         </div>
@@ -107,7 +107,7 @@
     <hr>
 
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label header">Etapes</label>
+        <label class="col-sm-2 col-form-label emphase">Etapes</label>
         <div class="col-sm-10">
             <div class="form-control form-control-plaintext">
                 {% for etape in circuit.etapes %}
@@ -122,7 +122,7 @@
     <hr>
 
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label header">Circuits programmés</label>
+        <label class="col-sm-2 col-form-label emphase">Circuits programmés</label>
         <div class="col-sm-10">
             <div class="form-control form-control-plaintext">
                 {% for programmationCircuit in circuit.programmationCircuits %}
