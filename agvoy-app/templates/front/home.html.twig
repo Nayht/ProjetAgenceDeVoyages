@@ -1,19 +1,21 @@
-<!DOCTYPE html>
+{% extends "base.html.twig" %}
 
+{% block title %}
 <title>Hello {{ controller_name }}!</title>
+{% endblock %}
 
 {% block body %}
-    <h1>Liste des circuits</h1>
+    <h1 class="inpage-title">Liste des circuits</h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Description</th>
-            <th>Pays départ</th>
-            <th>Ville départ</th>
-            <th>Ville arrivée</th>
-            <th>Durée circuit</th>
+            <th><label class="header">Id</label></th>
+            <th><label class="header">Description</label></th>
+            <th><label class="header">Pays départ</label></th>
+            <th><label class="header">Ville départ</label></th>
+            <th><label class="header">Ville arrivée</label></th>
+            <th><label class="header">Durée circuit</label></th>
             <th> </th>
         </tr>
         </thead>
