@@ -32,6 +32,17 @@
                 <th class="emphase">DureeCircuit</th>
                 <td>{{ circuit.dureeCircuit }}</td>
             </tr>
+
+            <tr>
+                <th class="emphase">Etapes</th>
+                <td>
+                    {% for etape in circuit.etapes %}
+                        {{ etape.numeroEtape }}.{{ etape.villeEtape }} &emsp;
+                    {% else %}
+                        DIRECT
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 

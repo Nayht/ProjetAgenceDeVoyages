@@ -12,6 +12,7 @@
                 <th>NumeroEtape</th>
                 <th>VilleEtape</th>
                 <th>NombreJours</th>
+                <th>Circuits</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,6 +23,7 @@
                 <td>{{ etape.numeroEtape }}</td>
                 <td>{{ etape.villeEtape }}</td>
                 <td>{{ etape.nombreJours }}</td>
+                <td>{{ etape.circuit }}</td>
                 <td>
                     <a href="{{ path('admin_etape_show', {'id': etape.id}) }}">Show</a>
                     &nbsp;

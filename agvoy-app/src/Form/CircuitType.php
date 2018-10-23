@@ -16,7 +16,6 @@ class CircuitType extends AbstractType
             ->add('paysDepart')
             ->add('villeDepart')
             ->add('villeArrivee')
-            ->add('dureeCircuit')
         ;
     }
 

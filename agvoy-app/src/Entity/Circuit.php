@@ -45,6 +45,7 @@ class Circuit
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Etape", mappedBy="circuit", orphanRemoval=true)
+     * @ORM\OrderBy({"numeroEtape" = "ASC"})
      */
     private $etapes;
 
@@ -132,12 +133,23 @@ class Circuit
         return $this->etapes;
     }
 
+    public function userAddEtape(Etape $etape, int $position){
+
+        foreach($this->getEtapes() as $etape){
+            if ($etape->getNumeroEtape()>=$position){
+                $etape->setNumeroEtape($etape->getNumeroEtape()+1);
+            }
+        }
+        $this->addEtape($etape);
+    }
+
     public function addEtape(Etape $etape): self
     {
         if (!$this->etapes->contains($etape)) {
             $this->etapes[] = $etape;
             $etape->setCircuit($this);
         }
+        $this->calculateDureeCircuit();
 
         return $this;
     }
@@ -151,8 +163,17 @@ class Circuit
                 $etape->setCircuit(null);
             }
         }
+        $this->calculateDureeCircuit();
 
         return $this;
+    }
+
+    public function calculateDureeCircuit(){
+        $dureeTotale=0;
+        foreach($this->getEtapes() as $etape){
+            $dureeTotale+=$etape->getNombreJours();
+        }
+        $this->setDureeCircuit($dureeTotale);
     }
 
     /**

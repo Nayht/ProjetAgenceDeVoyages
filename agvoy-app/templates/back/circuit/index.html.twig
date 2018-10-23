@@ -14,7 +14,8 @@
                 <th>VilleDepart</th>
                 <th>VilleArrivee</th>
                 <th>DureeCircuit</th>
-                <th>actions</th>
+                <th>Etapes</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,13 @@
                 <td>{{ circuit.villeDepart }}</td>
                 <td>{{ circuit.villeArrivee }}</td>
                 <td>{{ circuit.dureeCircuit }}</td>
+                <td>
+                    {% for etape in circuit.etapes %}
+                        {{ etape.numeroEtape }}.{{ etape.villeEtape }} &emsp;
+                    {% else %}
+                        DIRECT
+                    {% endfor %}
+                </td>
                 <td>
                     <a href="{{ path('admin_circuit_show', {'id': circuit.id}) }}">Show</a>
                     &nbsp;
