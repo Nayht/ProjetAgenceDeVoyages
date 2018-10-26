@@ -19,3 +19,7 @@ body{
 hr{
     background-color:#fff;
 }
+
+nav.navbar-dark {
+    background-color:#222;
+}

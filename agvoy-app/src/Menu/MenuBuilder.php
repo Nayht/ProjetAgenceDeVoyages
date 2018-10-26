@@ -38,14 +38,6 @@ class MenuBuilder
                 'class' => 'nav-link',
                 'icon' => 'fa fa-list'
             ));
-        // ... add more children
-        $menu->addChild('Todo list', array('route' => 'todo_list'))
-            ->setAttributes(array('class' => 'nav-link'));
-        $menu->addChild('Actives Todos', array('route' => 'todo_active_list'))
-            ->setAttributes(array('class' => 'nav-link'));
-        
-        $menu->addChild('Pastes', array('route' => 'paste_index'))
-            ->setAttributes(array('class' => 'nav-link'));
 
         return $menu;
     }
@@ -58,18 +50,24 @@ class MenuBuilder
         //if($this->container->get('security.context')->isGranted(array('ROLE_ADMIN', 'ROLE_USER'))) {} // Check if the visitor has any authenticated roles
         if($this->container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY'))
         {
+            // Children for connected users
+            $menu->addChild('Circuits', array('route' => 'admin_circuit_index'))
+                ->setAttributes(array('class' => 'nav-link'));
+            $menu->addChild('Etapes', array('route' => 'admin_etape_index'))
+                ->setAttributes(array('class' => 'nav-link'));
+
             // Get username of the current logged in user
             $username = $this->container->get('security.token_storage')->getToken()->getUser()->getUsername();
             $label = 'Hi '. $username;
         }
         else 
-       {
+        {
             $label = 'Hi visitor'; 
         }
         $menu->addChild('User', array('label' => $label))
         ->setAttribute('dropdown', true)
         ->setAttribute('icon', 'fa fa-user');
-        
+
         return $menu;
     }
     
