@@ -33,7 +33,13 @@ class MenuBuilder
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav');
         
-        $menu->addChild('Home', array('route' => 'home'))
+        $menu->addChild('Accueil', array('route' => 'home'))
+            ->setAttributes(array(
+                'class' => 'nav-link',
+                'icon' => 'fa fa-list'
+            ));
+
+        $menu->addChild('Circuits', array('route' => 'circuits'))
             ->setAttributes(array(
                 'class' => 'nav-link',
                 'icon' => 'fa fa-list'
@@ -46,12 +52,12 @@ class MenuBuilder
 
         if($isConnected) {
             // Children for connected users
-            $menu->addChild('Circuits', array('route' => 'admin_circuit_index'))
+            $menu->addChild('Edit circuits', array('route' => 'admin_circuit_index'))
                 ->setAttributes(array(
                     'class' => 'nav-link',
                     'icon' => 'fa fa-list'
                 ));
-            $menu->addChild('Etapes', array('route' => 'admin_etape_index'))
+            $menu->addChild('Edit étapes', array('route' => 'admin_etape_index'))
                 ->setAttributes(array(
                     'class' => 'nav-link',
                     'icon' => 'fa fa-list'

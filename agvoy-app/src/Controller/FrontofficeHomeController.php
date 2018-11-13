@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FrontofficeHomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="front")
+     * @Route("/circuits", name="circuits")
      */
     public function index()
     {
@@ -48,7 +48,7 @@ class FrontofficeHomeController extends AbstractController
         $circuit = $em->getRepository(Circuit::class)->find($id);
 
         if (sizeof($circuit->getProgrammationCircuits())==0){
-            return $this->redirectToRoute('front');
+            return $this->redirectToRoute('circuits');
         }
 
         $likes = $this->get('session')->get('likes');
@@ -89,12 +89,12 @@ class FrontofficeHomeController extends AbstractController
 
         //Si le circuit n'est pas dans la liste des circuit sprogrammés, on n'update pas la variable likes
         if (sizeof($circuit->getProgrammationCircuits())==0){
-            return $this->redirectToRoute('front');
+            return $this->redirectToRoute('circuits');
         }
 
         $this->get('session')->set('likes', $likes);
 
-        return $this->redirectToRoute('front');
+        return $this->redirectToRoute('circuits');
     }
 
     /**
@@ -123,7 +123,7 @@ class FrontofficeHomeController extends AbstractController
 
         //Si le circuit n'est pas dans la liste des circuit sprogrammés, on n'update pas la variable likes
         if (sizeof($circuit->getProgrammationCircuits())==0){
-            return $this->redirectToRoute('front');
+            return $this->redirectToRoute('circuits');
         }
 
         $this->get('session')->set('likes', $likes);
