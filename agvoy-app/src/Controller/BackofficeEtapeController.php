@@ -65,7 +65,7 @@ class BackofficeEtapeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('back/admin_etape_edit', ['id' => $etape->getId()]);
+            return $this->redirectToRoute('admin_etape_edit', ['id' => $etape->getId()]);
         }
 
         return $this->render('back/etape/edit.html.twig', [

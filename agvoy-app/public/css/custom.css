@@ -23,3 +23,7 @@ hr{
 nav.navbar-dark {
     background-color:#222;
 }
+
+.usernameDisplay{
+    padding: 0.5rem 1rem;
+}
