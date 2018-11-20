@@ -110,5 +110,49 @@ class MenuBuilder
 
         return $menu;
     }
+
+    public function createAdminMenu(array $options)
+    {
+        $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav ml-auto');
+
+        //if($this->container->get('security.context')->isGranted(array('ROLE_ADMIN', 'ROLE_USER'))) {} // Check if the visitor has any authenticated roles
+        $isConnected=false;
+        if($this->container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $isConnected=true;
+        }
+
+        if($isConnected)
+        {
+            // Get username of the current logged in user
+            $username = $this->container->get('security.token_storage')->getToken()->getUser()->getUsername();
+            $label = 'Hi '. $username;
+        }
+        else
+        {
+            $label = 'Hi visitor';
+        }
+
+        $menu->addChild('User', array('label' => $label))
+            ->setAttribute('class', 'usernameDisplay');
+
+        if($isConnected) {
+            $menu->addChild('Disconnect', array('route' => 'fos_user_security_logout'))
+                ->setAttributes(array(
+                    'class' => 'nav-link',
+                    'icon' => 'fa fa-list'
+                ));
+        }
+        else{
+            $menu->addChild('Connexion', array('route' => 'fos_user_security_login'))
+                ->setAttributes(array(
+                    'class' => 'nav-link',
+                    'icon' => 'fa fa-list'
+                ));
+        }
+
+
+        return $menu;
+    }
     
 }
