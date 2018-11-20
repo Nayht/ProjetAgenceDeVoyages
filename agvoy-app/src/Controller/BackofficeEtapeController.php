@@ -39,7 +39,7 @@ class BackofficeEtapeController extends AbstractController
             $em->persist($etape);
             $em->flush();
 
-            return $this->redirectToRoute('back/admin_etape_index');
+            return $this->redirectToRoute('admin_etape_index');
         }
 
         return $this->render('back/etape/new.html.twig', [
@@ -87,6 +87,6 @@ class BackofficeEtapeController extends AbstractController
             $em->flush();
         }
 
-        return $this->redirectToRoute('back/admin_etape_index');
+        return $this->redirectToRoute('admin_etape_index');
     }
 }

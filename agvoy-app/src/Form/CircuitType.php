@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Circuit;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,6 +17,13 @@ class CircuitType extends AbstractType
             ->add('paysDepart')
             ->add('villeDepart')
             ->add('villeArrivee')
+            ->add('etapes', CollectionType::class, array(
+                'entry_type' => EtapeType::class,
+                'entry_options' => array('label' => false),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+            ));
         ;
     }
 

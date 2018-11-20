@@ -39,7 +39,7 @@ class BackofficeCircuitController extends AbstractController
             $em->persist($circuit);
             $em->flush();
 
-            return $this->redirectToRoute('circuit_index');
+            return $this->redirectToRoute('admin_circuit_index');
         }
 
         return $this->render('back/circuit/new.html.twig', [
