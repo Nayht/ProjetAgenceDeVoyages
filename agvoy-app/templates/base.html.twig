@@ -40,9 +40,11 @@
     {% block body %}
 
     <div class="container body-container">
-        {% block main %}
-            MAIN
-        {% endblock %} {# main #}
+        <main>
+            {% block main %}
+                MAIN
+            {% endblock %} {# main #}
+        </main>
     </div>
 
     {% endblock %} {# body #}
