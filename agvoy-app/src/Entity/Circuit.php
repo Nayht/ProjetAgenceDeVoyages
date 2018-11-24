@@ -133,18 +133,6 @@ class Circuit
         return $this->etapes;
     }
 
-    public function userAddEtape(Etape $etape, int $position) : self
-    {
-        foreach($this->getEtapes() as $etape){
-            if ($etape->getNumeroEtape()>=$position){
-                $etape->setNumeroEtape($etape->getNumeroEtape()+1);
-            }
-        }
-        $this->addEtape($etape);
-
-        return $this;
-    }
-
     public function addEtape(Etape $etape): self
     {
         if (!$this->etapes->contains($etape)) {

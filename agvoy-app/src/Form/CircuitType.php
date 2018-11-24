@@ -18,7 +18,7 @@ class CircuitType extends AbstractType
             ->add('villeDepart')
             ->add('villeArrivee')
             ->add('etapes', CollectionType::class, array(
-                'entry_type' => EtapeType::class,
+                'entry_type' => EtapeTypeFromCircuit::class,
                 'entry_options' => array('label' => false),
                 'allow_add' => true,
                 'allow_delete' => true,

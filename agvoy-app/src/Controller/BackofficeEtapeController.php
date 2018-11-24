@@ -38,6 +38,8 @@ class BackofficeEtapeController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($etape);
             $em->flush();
+            $etape->getCircuit()->calculateDureeCircuit();
+            $em->flush();
 
             return $this->redirectToRoute('admin_etape_index');
         }
@@ -65,7 +67,10 @@ class BackofficeEtapeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            $etape->getCircuit()->calculateDureeCircuit();
+            $em->flush();
 
             return $this->redirectToRoute('admin_etape_edit', ['id' => $etape->getId()]);
         }
@@ -84,6 +89,8 @@ class BackofficeEtapeController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$etape->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($etape);
+            $em->flush();
+            $etape->getCircuit()->calculateDureeCircuit();
             $em->flush();
         }
 
