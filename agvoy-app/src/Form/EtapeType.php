@@ -15,7 +15,6 @@ class EtapeType extends AbstractType
             ->add('numeroEtape')
             ->add('villeEtape')
             ->add('nombreJours')
-            ->add('circuit')
         ;
     }
 

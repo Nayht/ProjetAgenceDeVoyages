@@ -1,5 +1,22 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+    {{ form_row(form.description) }}
+    {{ form_row(form.paysDepart) }}
+    {{ form_row(form.villeDepart) }}
+    {{ form_row(form.villeArrivee) }}
+
+<p>Etapes :</p>
+<ul class="etapes" data-prototype="{{ form_widget(form.etapes.vars.prototype)|e('html_attr') }}">
+
+    {% for etape in form.etapes %}
+        <li>
+            {{ form_row(etape.numeroEtape) }}
+            {{ form_row(etape.villeEtape) }}
+            {{ form_row(etape.nombreJours) }}
+        </li>
+        <hr>
+    {% endfor %}
+</ul>
+<button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

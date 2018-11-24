@@ -44,13 +44,13 @@ class Circuit
     private $dureeCircuit;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Etape", mappedBy="circuit", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Etape", mappedBy="circuit", orphanRemoval=true, cascade={"persist"})
      * @ORM\OrderBy({"numeroEtape" = "ASC"})
      */
     private $etapes;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ProgrammationCircuit", mappedBy="circuit", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\ProgrammationCircuit", mappedBy="circuit", orphanRemoval=true, cascade={"persist"})
      */
     private $programmationCircuits;
 
