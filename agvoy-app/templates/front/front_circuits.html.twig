@@ -11,7 +11,6 @@ Hello {{ controller_name }}!
     <table class="table">
         <thead>
         <tr class="emphase">
-            <th>Id</th>
             <th>Description</th>
             <th>Pays départ</th>
             <th>Ville départ</th>
@@ -30,9 +29,8 @@ Hello {{ controller_name }}!
                 <td>{{ prog.getCircuit().villeDepart }}</td>
                 <td>{{ prog.getCircuit().villeArrivee }}</td>
                 <td>{{ prog.getCircuit().dureeCircuit }}</td>
-                <td>{{ prog.getCircuit().dureeCircuit }}</td>
-                <td>{{ prog.prix }}</td>
                 <td>{{ prog.nombrePersonnes }}</td>
+                <td>{{ prog.prix }}</td>
                 <td>
                     <a href="{{ path('front_circuit_show', {id: prog.getCircuit().id}) }}">Détails du circuit</a>
                     <br>
