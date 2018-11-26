@@ -33,7 +33,7 @@ class FrontofficeHomeController extends AbstractController
             $likes = [];
         }
 
-        return $this->render('front/home.html.twig', [
+        return $this->render('front/front_circuits.html.twig', [
             'programmations' => $allCircuitsProgrammes,
             'controller_name' => 'FrontofficeHomeController',
             'likes' => $likes,

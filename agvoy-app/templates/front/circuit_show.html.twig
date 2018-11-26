@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'front/front_base.html.twig' %}
 
 {% block title %}Circuit {{circuit.id}} : {{ circuit.villeDepart }} --> {{ circuit.villeArrivee }}{% endblock %}
 {% block header %} <h1 class="inpage-title">Circuit {{circuit.id}} : {{ circuit.villeDepart }} --> {{ circuit.villeArrivee }}</h1>{% endblock %}
@@ -6,6 +6,8 @@
 {% block main %}
 
 <div class="form-horizontal">
+
+    <img width="640" height="480" src="/images/{{ circuit.id }}/top.jpg" alt="{{ circuit.villeDepart }} ==> {{ circuit.villeArrivee }}"/>
 
     <div class="form-group row">
         <label class="col-sm-2 col-form-label emphase">Id</label>

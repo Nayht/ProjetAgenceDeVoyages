@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="/css/bootstrap.min.css">
+            <link rel="stylesheet" href="/css/custom.css">
+        {% endblock %}
+
+        <style>{% block additionalStyles %}{% endblock %}</style>
+    </head>
+
+    <body>
+        <header>
+            {% block menu %}
+                {# Collect the nav links, forms, and other content for toggling #}
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+                    {% if is_granted('ROLE_SUPER_ADMN') %}
+                        {{ knp_menu_render('admin', {'currentClass': 'active'}) }}
+                    {% elseif is_granted('ROLE_ADMIN') %}
+                        {{ knp_menu_render('admin', {'currentClass': 'active'}) }}
+                    {% elseif is_granted('ROLE_USER') %}
+                        {{ knp_menu_render('user', {'currentClass': 'active'}) }}
+                    {% else %}
+                        {{ knp_menu_render('base', {'currentClass': 'active'}) }}
+                    {% endif %}
+                    {{ knp_menu_render('connexion', {'currentClass': 'active'}) }}
+                </nav>
+            {% endblock %} {# menu #}
+        </header>
+    <div style="text-align:center">
+        {% block header %}
+        {% endblock %}
+    </div>
+    <br>
+    <br>
+    <br>
+    {% block body %}
+
+    <div class="container body-container">
+        <main>
+            {% block main %}
+                MAIN
+            {% endblock %} {# main #}
+        </main>
+    </div>
+
+    {% endblock %} {# body #}
+	{% block footer %}
+        <div>
+        </div>
+	{% endblock %} {# footer #}
+    </body>
+
+    {% block javascripts %}
+        <script	src="/js/jquery-3.3.1.js"></script>
+        <script src="/js/popper.js"></script>
+        <script src="/js/bootstrap.js"></script>
+	{% endblock %} {# javascripts #}
+
+    {% block custompage_script %}
+    {% endblock %} {# custompage_scripts #}
+</html>

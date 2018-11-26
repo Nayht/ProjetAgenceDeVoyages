@@ -1,5 +1,14 @@
+html {
+    margin:0;
+    padding:0;
+    background-image: url("/images/fond.jpg");
+    background-color: #cccccc;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+}
+
 body{
-    background-color:#333;
+    background-color:rgba(20,20,20,0.8);
     color:#fff;
 }
 
@@ -26,4 +35,12 @@ nav.navbar-dark {
 
 .usernameDisplay{
     padding: 0.5rem 1rem;
+}
+
+.frontContainer {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
