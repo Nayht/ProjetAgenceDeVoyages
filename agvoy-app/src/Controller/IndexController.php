@@ -22,7 +22,7 @@ class IndexController extends Controller
     public function indexAction()
     {
         return $this->render('home.html.twig',array(
-            'welcome' => "Bonne utilisation de l'agence de voyage")
+            'welcome' => "Bienvenue sur Algonyr, l'agence de voyages du futur de l'Internet des objets connectés")
             );
     }
 }
