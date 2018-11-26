@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProgrammationCircuit{% endblock %}
+
+{% block main %}
+    <h1 class="inpage-title">Programmations</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="emphase">Id</th>
+                <td>{{ programmation_circuit.id }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">Circuit</th>
+                <td>{{ programmation_circuit.circuit.id }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">DateDepart</th>
+                <td>{{ programmation_circuit.dateDepart ? programmation_circuit.dateDepart|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">NombrePersonnes</th>
+                <td>{{ programmation_circuit.nombrePersonnes }}</td>
+            </tr>
+            <tr>
+                <th class="emphase">Prix</th>
+                <td>{{ programmation_circuit.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_programmation_circuit_index') }}">Back to list</a>
+    <br>
+    <a href="{{ path('admin_programmation_circuit_edit', {'id': programmation_circuit.id}) }}">Edit</a>
+
+    {{ include('back/programmation_circuit/_delete_form.html.twig') }}
+{% endblock %}

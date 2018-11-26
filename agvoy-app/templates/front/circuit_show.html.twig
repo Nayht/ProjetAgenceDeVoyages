@@ -5,60 +5,6 @@
 
 {% block main %}
 
-{#
-<table class="table">
-<tbody>
-<tr>
-    <th>Id</th>
-    <th>Description</th>
-    <th>Pays départ</th>
-    <th>Ville départ</th>
-    <th>Ville arrivée</th>
-    <th>Durée circuit</th>
-    <th>Etapes</th>
-    <th>Prix</th>
-    <th>Nombre de personnes</th>
-    <th>Date de départ</th>
-</tr>
-<tr>
-    <td>{{ circuit.id }}</td>
-    <td>{{ circuit.description }}</td>
-    <td>{{ circuit.paysDepart }}</td>
-    <td>{{ circuit.villeDepart }}</td>
-    <td>{{ circuit.villeArrivee }}</td>
-    <td>{{ circuit.dureeCircuit }}</td>
-    <td>{% for etape in circuit.etapes %}
-            {{ etape.numeroEtape }}.{{ etape.villeEtape }}
-        {% else %}
-            DIRECT
-        {% endfor %}
-    </td>
-    <td>
-        {% for programmationCircuit in circuit.programmationCircuits %}
-            {{ programmationCircuit.prix }}
-        {% else %}
-            Y'a pas de prix, donc c'est gratuit (gros bug)
-        {% endfor %}
-    </td>
-    <td>
-        {% for programmationCircuit in circuit.programmationCircuits %}
-            {{ programmationCircuit.nombrePersonnes }}
-        {% else %}
-            Pas prévu (gros bug)
-        {% endfor %}
-    </td>
-    <td>
-        {% for programmationCircuit in circuit.programmationCircuits %}
-            {{ programmationCircuit.dateDepart|date('Y-m-d') }}
-        {% else %}
-            Pas de date prévue (gros bug)
-        {% endfor %}
-    </td>
-</tr>
-</tbody>
-</table>
-#}
-
 <div class="form-horizontal">
 
     <div class="form-group row">
@@ -125,24 +71,23 @@
         <label class="col-sm-2 col-form-label emphase">Circuits programmés</label>
         <div class="col-sm-10">
             <div class="form-control form-control-plaintext">
-                {% for programmationCircuit in circuit.programmationCircuits %}
-                    {{ programmationCircuit.dateDepart|date('Y-m-d') }} : pour {{ programmationCircuit.nombrePersonnes }} personnes au prix ridicule de {{ programmationCircuit.prix }} €
+                {% for prog in circuit.programmationCircuit %}
+                    {{ prog.dateDepart|date('Y-m-d') }} : pour {{ prog.nombrePersonnes }} personnes au prix ridicule de {{ prog.prix }} €
+                    <br>
+                    {% if prog.id in likes %}
+                        <a href="{{ path('likes_circuit_specific', {id: prog.id}) }}">Je n'aime plus</a>
+                    {% else %}
+                        <a href="{{ path('likes_circuit_specific', {id: prog.id}) }}">J'aime</a>
+                    {% endif %}
+                    <br>
                 {% else %}
                     Pas prévu (gros bug)
                 {% endfor %}
             </div>
         </div>
     </div>
-
 </div>
 
-<br>
-{% if circuit.id in likes %}
-    <a href="{{ path('likes_circuit_specific', {id: circuit.id}) }}">Je n'aime plus</a>
-{% else %}
-    <a href="{{ path('likes_circuit_specific', {id: circuit.id}) }}">J'aime</a>
-{% endif %}
-<br>
 <a href="{{ path('circuits') }}">Retour à l'accueil</a>
 
 {% endblock %}

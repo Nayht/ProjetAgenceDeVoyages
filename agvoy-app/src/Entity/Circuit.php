@@ -169,7 +169,7 @@ class Circuit
     /**
      * @return Collection|ProgrammationCircuit[]
      */
-    public function getProgrammationCircuits(): Collection
+    public function getProgrammationCircuit(): Collection
     {
         return $this->programmationCircuits;
     }

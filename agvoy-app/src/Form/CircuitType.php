@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Circuit;
+use App\Entity\ProgrammationCircuit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,6 +20,13 @@ class CircuitType extends AbstractType
             ->add('villeArrivee')
             ->add('etapes', CollectionType::class, array(
                 'entry_type' => EtapeTypeFromCircuit::class,
+                'entry_options' => array('label' => false),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+            ))
+            ->add('programmationCircuit', CollectionType::class, array(
+                'entry_type' => ProgrammationCircuitTypeFromCircuit::class,
                 'entry_options' => array('label' => false),
                 'allow_add' => true,
                 'allow_delete' => true,

@@ -107,6 +107,11 @@ class MenuBuilder
                 'class' => 'nav-link',
                 'icon' => 'fa fa-list'
             ));
+        $menu->addChild('Edit programmations', array('route' => 'admin_programmation_circuit_index'))
+            ->setAttributes(array(
+                'class' => 'nav-link',
+                'icon' => 'fa fa-list'
+            ));
         $menu->addChild('Edit étapes', array('route' => 'admin_etape_index'))
             ->setAttributes(array(
                 'class' => 'nav-link',

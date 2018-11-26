@@ -16,15 +16,16 @@ class FrontofficeHomeController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $circuitsProgrammes = [];
+        $allCircuitsProgrammes = [];
 
         foreach ($em->getRepository(Circuit::class)->findAll() as $circuit) {
-            if (sizeof($circuit->getProgrammationCircuits())>0) {
-                array_push($circuitsProgrammes, $circuit);
+            $circuitsProgrammes=$circuit->getProgrammationCircuit();
+            if (sizeof($circuitsProgrammes)>0) {
+                foreach ($circuitsProgrammes as $programmation) {
+                    array_push($allCircuitsProgrammes, $programmation);
+                }
             }
         }
-
-        dump($circuitsProgrammes);
 
         $likes = $this->get('session')->get('likes');
 
@@ -33,7 +34,7 @@ class FrontofficeHomeController extends AbstractController
         }
 
         return $this->render('front/home.html.twig', [
-            'circuits' => $circuitsProgrammes,
+            'programmations' => $allCircuitsProgrammes,
             'controller_name' => 'FrontofficeHomeController',
             'likes' => $likes,
         ]);
@@ -47,7 +48,7 @@ class FrontofficeHomeController extends AbstractController
 
         $circuit = $em->getRepository(Circuit::class)->find($id);
 
-        if (sizeof($circuit->getProgrammationCircuits())==0){
+        if (sizeof($circuit->getProgrammationCircuit())==0){
             return $this->redirectToRoute('circuits');
         }
 
@@ -69,7 +70,7 @@ class FrontofficeHomeController extends AbstractController
     public function likes($id){
         $em = $this->getDoctrine()->getManager();
 
-        $circuit = $em->getRepository(Circuit::class)->find($id);
+        $prog = $em->getRepository(ProgrammationCircuit::class)->find($id);
 
         $likes = $this->get('session')->get('likes');
 
@@ -85,11 +86,6 @@ class FrontofficeHomeController extends AbstractController
         else //Sinon, on le retire du tableau
         {
             $likes = array_diff($likes, array($id));
-        }
-
-        //Si le circuit n'est pas dans la liste des circuit sprogrammés, on n'update pas la variable likes
-        if (sizeof($circuit->getProgrammationCircuits())==0){
-            return $this->redirectToRoute('circuits');
         }
 
         $this->get('session')->set('likes', $likes);
@@ -103,7 +99,7 @@ class FrontofficeHomeController extends AbstractController
     public function likesCircuitSpecific($id){
         $em = $this->getDoctrine()->getManager();
 
-        $circuit = $em->getRepository(Circuit::class)->find($id);
+        $prog = $em->getRepository(ProgrammationCircuit::class)->find($id);
 
         $likes = $this->get('session')->get('likes');
 
@@ -121,13 +117,8 @@ class FrontofficeHomeController extends AbstractController
             $likes = array_diff($likes, array($id));
         }
 
-        //Si le circuit n'est pas dans la liste des circuit sprogrammés, on n'update pas la variable likes
-        if (sizeof($circuit->getProgrammationCircuits())==0){
-            return $this->redirectToRoute('circuits');
-        }
-
         $this->get('session')->set('likes', $likes);
 
-        return $this->redirectToRoute('front_circuit_show', ['id' => $id]);
+        return $this->redirectToRoute('front_circuit_show', ['id' => $prog->getCircuit()->getId()]);
     }
 }

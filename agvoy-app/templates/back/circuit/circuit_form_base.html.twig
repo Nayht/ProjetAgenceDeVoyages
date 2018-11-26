@@ -73,4 +73,75 @@
         }
 
     </script>
+    <script>
+        var $collectionHolderBis;
+
+        //setup an "add a tag" link
+        var $addProgrammationButton = $('<button type="button" class="add_programmation_link">Ajouter une programmation</button>');
+        var $newLinkLiBis = $('<li></li>').append($addProgrammationButton);
+
+        jQuery(document).ready(function() {
+// Get the ul that holds the collection of tags
+            $collectionHolderBis = $('ul.programmations');
+
+//add a delete link to all of the existing tag form li elements
+            $collectionHolderBis.find('li').each(function() {
+                addProgrammationFormDeleteLink($(this));
+            });
+
+// add the "add a tag" anchor and li to the tags ul
+            $collectionHolderBis.append($newLinkLiBis);
+
+// count the current form inputs we have (e.g. 2), use that as the new
+// index when inserting a new item (e.g. 2)
+            $collectionHolderBis.data('index', $collectionHolderBis.find(':input').length);
+
+            $addProgrammationButton.on('click', function(e) {
+// add a new tag form (see next code block)
+                addProgrammationForm($collectionHolderBis, $newLinkLiBis);
+            });
+        });
+
+
+        function addProgrammationForm($collectionHolder, $newLinkLi) {
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
+
+            // get the new index
+            var index = $collectionHolder.data('index');
+
+            var newForm = prototype;
+            // You need this only if you didn't set 'label' => false in your tags field in TaskType
+            // Replace '__name__label__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            // newForm = newForm.replace(/__name__label__/g, index);
+
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            newForm = newForm.replace(/__name__/g, index);
+
+            // increase the index with one for the next item
+            $collectionHolder.data('index', index + 1);
+
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var $newFormLi = $('<li></li>').append(newForm);
+
+            // add a delete link to the new form
+            addProgrammationFormDeleteLink($newFormLi);
+
+            $newLinkLi.before($newFormLi);
+        }
+
+
+        function addProgrammationFormDeleteLink($etapeFormLi) {
+            var $removeFormButton = $('<button type="button">Supprimer cette programmation</button>');
+            $etapeFormLi.append($removeFormButton);
+
+            $removeFormButton.on('click', function(e) {
+                // remove the li for the todo form
+                $etapeFormLi.remove();
+            });
+        }
+
+    </script>
 {% endblock %} {# custompage_script #}

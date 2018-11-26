@@ -6,7 +6,7 @@
     {{ form_row(form.villeDepart) }}
     {{ form_row(form.villeArrivee) }}
 
-<p>Etapes :</p>
+<h3 class="inpage-title">Etapes :</h3>
 <ul class="etapes" data-prototype="{{ form_widget(form.etapes.vars.prototype)|e('html_attr') }}">
 
     {% for etape in form.etapes %}
@@ -14,6 +14,19 @@
             {{ form_row(etape.numeroEtape) }}
             {{ form_row(etape.villeEtape) }}
             {{ form_row(etape.nombreJours) }}
+        </li>
+        <hr>
+    {% endfor %}
+</ul>
+
+<h3 class="inpage-title">Programmations :</h3>
+<ul class="programmations" data-prototype="{{ form_widget(form.programmationCircuit.vars.prototype)|e('html_attr') }}">
+
+    {% for prog in form.programmationCircuit %}
+        <li>
+            {{ form_row(prog.dateDepart) }}
+            {{ form_row(prog.nombrePersonnes) }}
+            {{ form_row(prog.prix) }}
         </li>
         <hr>
     {% endfor %}
