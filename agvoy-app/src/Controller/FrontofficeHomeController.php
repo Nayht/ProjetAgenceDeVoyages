@@ -139,7 +139,10 @@ class FrontofficeHomeController extends AbstractController
         $programmationsLikes= [];
 
         foreach ($likes as $like){
-            array_push($programmationsLikes, $em->getRepository(ProgrammationCircuit::class)->find($like));
+            $circuitLiked = $em->getRepository(ProgrammationCircuit::class)->find($like);
+            if ($circuitLiked != null) {
+                array_push($programmationsLikes, $circuitLiked);
+            }
         }
 
         return $this->render('front/view_likes.html.twig', [

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1 class="inpage-title">Programmations index</h1>
+    <h1 class="inpage-title">Index des programmations</h1>
 
     <table class="table">
         <thead>
@@ -23,18 +23,18 @@
                 <td>{{ programmation_circuit.nombrePersonnes }}</td>
                 <td>{{ programmation_circuit.prix }}</td>
                 <td>
-                    <a href="{{ path('admin_programmation_circuit_show', {'id': programmation_circuit.id}) }}">Show</a>
+                    <a href="{{ path('admin_programmation_circuit_show', {'id': programmation_circuit.id}) }}">Détails</a>
                     &nbsp;
-                    <a href="{{ path('admin_programmation_circuit_edit', {'id': programmation_circuit.id}) }}">Edit</a>
+                    <a href="{{ path('admin_programmation_circuit_edit', {'id': programmation_circuit.id}) }}">Editer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Pas de programmations enregistrées</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('admin_programmation_circuit_new') }}">Create new</a>
+    <a href="{{ path('admin_programmation_circuit_new') }}">Créer une nouvelle programmation</a>
 {% endblock %}

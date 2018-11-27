@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <h1 class="inpage-title">Create new programmation</h1>
+    <h1 class="inpage-title">Créer une nouvelle programmation</h1>
 
     {{ include('back/programmation_circuit/_form.html.twig') }}
 
-    <a href="{{ path('admin_programmation_circuit_index') }}">back to list</a>
+    <a href="{{ path('admin_programmation_circuit_index') }}">Retour aux programmations</a>
 {% endblock %}
