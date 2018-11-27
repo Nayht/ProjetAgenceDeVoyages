@@ -1,7 +1,7 @@
 {% extends 'back/circuit/circuit_form_base.html.twig' %}
 
 {% block main %}
-    <h1 class="inpage-title">Editer les circuits</h1>
+    <h1 class="inpage-title">Editer le circuit {{ circuit.id }}</h1>
 
     {{ include('back/circuit/_form.html.twig', {'button_label': 'Update'}) }}
     <br>
