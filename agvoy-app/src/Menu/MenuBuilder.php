@@ -87,6 +87,11 @@ class MenuBuilder
                 'class' => 'nav-link',
                 'icon' => 'fa fa-list'
             ));
+        $menu->addChild('Circuits aimés', array('route' => 'view_likes'))
+            ->setAttributes(array(
+                'class' => 'nav-link',
+                'icon' => 'fa fa-list'
+            ));
         return $menu;
     }
     

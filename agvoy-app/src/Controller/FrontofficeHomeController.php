@@ -121,4 +121,30 @@ class FrontofficeHomeController extends AbstractController
 
         return $this->redirectToRoute('front_circuit_show', ['id' => $prog->getCircuit()->getId()]);
     }
+
+    /**
+     * @Route("/viewlikes", name="view_likes")
+     */
+    public function viewLikes(){
+        $em = $this->getDoctrine()->getManager();
+
+        $likes = $this->get('session')->get('likes');
+
+        if ($likes == null){
+            $likes = [];
+        }
+
+        $this->get('session')->set('likes', $likes);
+
+        $programmationsLikes= [];
+
+        foreach ($likes as $like){
+            array_push($programmationsLikes, $em->getRepository(ProgrammationCircuit::class)->find($like));
+        }
+
+        return $this->render('front/view_likes.html.twig', [
+            'programmationsLikes' => $programmationsLikes,
+            'likes' => $likes,
+        ]);
+    }
 }
