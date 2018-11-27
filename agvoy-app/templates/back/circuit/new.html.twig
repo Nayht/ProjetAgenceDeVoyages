@@ -1,9 +1,9 @@
 {% extends 'back/circuit/circuit_form_base.html.twig' %}
 
 {% block main %}
-    <h1 class="inpage-title">Create new circuit</h1>
+    <h1 class="inpage-title">Créer un nouveau circuit</h1>
     <br>
     {{ include('back/circuit/_form.html.twig') }}
     <br>
-    <a href="{{ path('admin_circuit_index') }}">Back to list</a>
+    <a href="{{ path('admin_circuit_index') }}">Retour aux circuits</a>
 {% endblock %}
