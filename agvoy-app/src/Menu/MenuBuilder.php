@@ -82,12 +82,12 @@ class MenuBuilder
                 'icon' => 'fa fa-list'
             ));
 
-        $menu->addChild('Circuits', array('route' => 'circuits'))
+        $menu->addChild('Voyages', array('route' => 'circuits'))
             ->setAttributes(array(
                 'class' => 'nav-link',
                 'icon' => 'fa fa-list'
             ));
-        $menu->addChild('Circuits aimés', array('route' => 'view_likes'))
+        $menu->addChild('Voyages aimés', array('route' => 'view_likes'))
             ->setAttributes(array(
                 'class' => 'nav-link',
                 'icon' => 'fa fa-list'
