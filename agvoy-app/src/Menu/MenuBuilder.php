@@ -42,18 +42,18 @@ class MenuBuilder
         {
             // Get username of the current logged in user
             $username = $this->container->get('security.token_storage')->getToken()->getUser()->getUsername();
-            $label = 'Hi '. $username;
+            $label = 'Bonjour, '. $username;
         }
         else
         {
-            $label = 'Hi visitor';
+            $label = 'Bonjour, aimable voyageur de l\'Internet';
         }
 
         $menu->addChild('User', array('label' => $label))
             ->setAttribute('class', 'usernameDisplay');
 
         if($isConnected) {
-            $menu->addChild('Disconnect', array('route' => 'fos_user_security_logout'))
+            $menu->addChild('Déconnexion', array('route' => 'fos_user_security_logout'))
                 ->setAttributes(array(
                     'class' => 'nav-link',
                     'icon' => 'fa fa-list'
@@ -107,17 +107,17 @@ class MenuBuilder
         $menu = $this->createUserMenu($options);
 
         // Children for connected users
-        $menu->addChild('Edit circuits', array('route' => 'admin_circuit_index'))
+        $menu->addChild('Editer les circuits', array('route' => 'admin_circuit_index'))
             ->setAttributes(array(
                 'class' => 'nav-link',
                 'icon' => 'fa fa-list'
             ));
-        $menu->addChild('Edit programmations', array('route' => 'admin_programmation_circuit_index'))
+        $menu->addChild('Editer les programmations', array('route' => 'admin_programmation_circuit_index'))
             ->setAttributes(array(
                 'class' => 'nav-link',
                 'icon' => 'fa fa-list'
             ));
-        $menu->addChild('Edit étapes', array('route' => 'admin_etape_index'))
+        $menu->addChild('Editer les étapes', array('route' => 'admin_etape_index'))
             ->setAttributes(array(
                 'class' => 'nav-link',
                 'icon' => 'fa fa-list'
